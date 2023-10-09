@@ -35,7 +35,7 @@ div#marquee {
     position: relative; 
 }
 
-div#filmlist {
+#filmlist {
 
     position: absolute; 
 }
@@ -51,7 +51,7 @@ div#filmlist {
 
 
 /* Animation Styles */
-div#filmlist {
+#filmlist {
 
     animation: scroll 50s linear infinite; 
 
