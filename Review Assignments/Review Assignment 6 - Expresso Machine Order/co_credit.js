@@ -48,12 +48,12 @@ window.addEventListener("load", function()
 {
   //retrieve the field/value pairs from the URL
   var orderData = location.search; 
-  console.log("location = " + orderData);
+  //console.log("location = " + orderData);
   //slice the orderData text string to remove the first '?' char,
   //replace every occurence of the '+' character with a blank space,
   //and decode the URI-encoded characters
   orderData = orderData.slice(orderData.indexOf('?'));
-  orderData = orderData.replace(/\+/g, " ");
+  orderData = orderData.replace(/\+/g, ' ');
   orderData = decodeURIComponent(orderData);  
 
   //split the orderData variable at every occurence of a '&' or '=' character
@@ -69,6 +69,8 @@ window.addEventListener("load", function()
   document.getElementById("order").elements.subTotal.value = orderFields[15];
   document.getElementById("order").elements.salesTax.value = orderFields[17];
   document.getElementById("order").elements.cartTotal.value = orderFields[19];
+
+  //console.log(typeof document.getElementById("order").elements.salesTax.value)
 
 });
 
@@ -87,20 +89,48 @@ window.addEventListener("load", function()
   document.getElementById("cardNumber").oninput = validateNumber; 
 
   //run the validateDate() function when a value is input into the expDate field. 
-  document.getElementById("expDate").oninput = validateDate();
+  document.getElementById("expDate").oninput = validateDate;
 
   //run the validateCVC() function when a value is input into the cvc field. 
-  document.getElementById("cvc").oninput = validateCVC(); 
+  document.getElementById("cvc").oninput = validateCVC; 
 
 });
 
-
-function runSubmit() {
+//this function runs when the form is submitted
+function runSubmit() 
+{
   
+  validateName();
+  validateCredit();
+  validateNumber();
+  validateDate();
+  validateCVC();
+
 }
 
-function validateDate() {
-  
+//the purpose of this function is to validate the credit card expiration date 
+//stored in the expDate field
+function validateDate() 
+{
+  var expDate = document.getElementById("expDate");
+
+  //if no value has been entered for the expiration date
+  if (expDate.validity.valueMissing)
+  {
+    //set the custom validation message 
+    expDate.setCustomValidity("Enter the expiration date");
+  }
+  //if the expiration date does not match the regular expression pattern:
+  else if (/^(0[1-9]|1[0-2])\/20[12]\d$/.test(expDate.value) === false)
+  {
+    //set the custom validation message
+    expDate.setCustomValidity("Enter a valid expiration date");
+  }
+  else
+  {
+    //otherwise, set the custom validation message to an empty text string
+    expDate.setCustomValidity("");
+  }
 }
 
 
