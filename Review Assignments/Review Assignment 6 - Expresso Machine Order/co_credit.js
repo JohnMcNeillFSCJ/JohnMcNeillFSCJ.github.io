@@ -47,28 +47,28 @@
 window.addEventListener("load", function()
 {
   //retrieve the field/value pairs from the URL
-  var orderData = window.location.search; 
+  var orderData = location.search; 
   console.log("location = " + orderData);
   //slice the orderData text string to remove the first '?' char,
   //replace every occurence of the '+' character with a blank space,
   //and decode the URI-encoded characters
-  //orderData = orderData.slice(orderData.indexOf('?'));
-  //orderData = orderData.replace('+', ' ');
-  //orderData = decodeURIComponent(orderData);  
+  orderData = orderData.slice(orderData.indexOf('?'));
+  orderData = orderData.replace('+', ' ');
+  orderData = decodeURIComponent(orderData);  
 
   //split the orderData variable at every occurence of a '&' or '=' character
   //and store the substrings in the orderFields array variable
-  //var orderFields = orderData.split(/[&=]/g);
+  var orderFields = orderData.split(/[&=]/g);
 
   //assign data from orderFields into corresponding fields in the order form
-  //document.getElementById("order").elements.modelName.value = orderFields[3]; 
-  //document.getElementById("order").elements.modelQty.value = orderFields[5];
-  //document.getElementById("order").elements.orderCost.value = orderFields[7];
-  //document.getElementById("order").elements.shippingType.value = orderFields[9];
-  //document.getElementById("order").elements.shippingCost.value = orderFields[13];
-  //document.getElementById("order").elements.subTotal.value = orderFields[15];
-  //document.getElementById("order").elements.salesTax.value = orderFields[17];
-  //document.getElementById("order").elements.cartTotal.value = orderFields[19];
+  document.getElementById("order").elements.modelName.value = orderFields[3]; 
+  document.getElementById("order").elements.modelQty.value = orderFields[5];
+  document.getElementById("order").elements.orderCost.value = orderFields[7];
+  document.getElementById("order").elements.shippingType.value = orderFields[9];
+  document.getElementById("order").elements.shippingCost.value = orderFields[13];
+  document.getElementById("order").elements.subTotal.value = orderFields[15];
+  document.getElementById("order").elements.salesTax.value = orderFields[17];
+  document.getElementById("order").elements.cartTotal.value = orderFields[19];
 
 });
 
@@ -143,7 +143,7 @@ function validateNumber() {
 }
 
 function validateCVC() {
-  /*
+  
    var cardCVC = document.getElementById("cvc");
    var creditCard = document.querySelector('input[name="company"]:checked').value;
    
@@ -157,7 +157,7 @@ function validateCVC() {
    cardCVC.setCustomValidity("");
   }
 
-  */
+  
 }
 
 function sumDigits(numStr) {
