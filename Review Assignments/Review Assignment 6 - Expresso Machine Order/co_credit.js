@@ -53,7 +53,7 @@ window.addEventListener("load", function()
   //replace every occurence of the '+' character with a blank space,
   //and decode the URI-encoded characters
   orderData = orderData.slice(orderData.indexOf('?'));
-  orderData = orderData.replace('+', ' ');
+  orderData = orderData.replace(/\+/g, " ");
   orderData = decodeURIComponent(orderData);  
 
   //split the orderData variable at every occurence of a '&' or '=' character
