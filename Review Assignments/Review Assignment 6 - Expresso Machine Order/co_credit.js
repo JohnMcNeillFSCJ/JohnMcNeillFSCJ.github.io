@@ -62,7 +62,7 @@ window.addEventListener("load", function()
 
   //assign data from orderFields into corresponding fields in the order form
   document.getElementById("order").elements.modelName.value = orderFields[3]; 
-  document.getElementById("order").elements.modelQty.value = orderFields[5];
+  document.getElementById("order").elements.modelQty.value = "X " + orderFields[5];
   document.getElementById("order").elements.orderCost.value = orderFields[7];
   document.getElementById("order").elements.shippingType.value = orderFields[9];
   document.getElementById("order").elements.shippingCost.value = orderFields[13];
