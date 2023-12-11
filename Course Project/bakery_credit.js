@@ -22,13 +22,12 @@ window.addEventListener("load", function ()
     //and store the substrings in the orderFields array variable
     var orderFields = orderData.split(/[&=]/g);
 
+    //console.log(orderFields[3]); 
+
     //assign data from orderFields into corresponding fields in the order form
-    document.getElementById("order").elements.modelName.value = orderFields[3];
-    document.getElementById("order").elements.modelQty.value = orderFields[5];
-    document.getElementById("order").elements.orderCost.value = orderFields[7];
-    document.getElementById("order").elements.subTotal.value = orderFields[15];
-    document.getElementById("order").elements.salesTax.value = orderFields[17];
-    document.getElementById("order").elements.cartTotal.value = orderFields[19];
+    document.getElementById("subTotal").setAttribute("value", orderFields[1]);
+    document.getElementById("salesTax").setAttribute("value", orderFields[3]);
+    document.getElementById("cartTotal").setAttribute("value", orderFields[5]);
 
     //console.log(typeof document.getElementById("order").elements.salesTax.value)
 

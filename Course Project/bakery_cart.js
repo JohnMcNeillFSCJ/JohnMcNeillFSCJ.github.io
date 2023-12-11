@@ -9,6 +9,11 @@
 
 window.addEventListener("load", setupCart);
 
+//initialized variables
+var subtotal = 0.0; 
+var tax = 0.0;
+var total = 0.0; 
+
 function setupCart() 
 {
     var addButtons = document.getElementsByClassName("addButton");
@@ -17,6 +22,8 @@ function setupCart()
     {
         addButtons[i].onclick = addItem;
     }
+
+
 }
 
 function addItem(e) 
@@ -27,7 +34,10 @@ function addItem(e)
     //element to the target of the event object. 
     //Store the sibling element in a variable
     var foodItem = e.target.nextElementSibling;
+
     //console.log(foodItem);
+
+    //console.log(foodItem.getElementsByClassName("price")[0].innerText);
 
     var foodID = foodItem.id;
 
@@ -71,10 +81,11 @@ function addItem(e)
             //indicate an additional order and then break out of the for loop
             cartBox.children[i].firstChild.textContent++;
 
-            //console.log(cartBox.children[i].firstChild.textContent); 
-
+            //console.log(cartBox.children[i].firstChild.textContent);
+            
             break;
         }
+
     }
 
     //test whether duplicateOrder is still false
@@ -99,5 +110,27 @@ function addItem(e)
 
     }
 
-    
+
+    //console.log("Here");
+    var food_price = parseFloat(foodItem.getElementsByClassName("price")[0].innerText); 
+    //console.log(food_price);
+    //console.log(typeof(food_price));
+
+    subtotal += food_price; 
+
+    var subtotal_input = document.getElementById("subtotal");
+
+    subtotal_input.setAttribute("value", "$" + subtotal.toFixed(2));
+
+    tax = subtotal * .075; 
+
+    var tax_input = document.getElementById("tax"); 
+
+    tax_input.setAttribute("value", "$" + tax.toFixed(2)); 
+
+    total = subtotal + tax; 
+
+    var total_input = document.getElementById("total"); 
+
+    total_input.setAttribute("value", "$" + total.toFixed(2)); 
 }
