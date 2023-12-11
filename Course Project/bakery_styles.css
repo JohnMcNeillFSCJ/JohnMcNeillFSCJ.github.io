@@ -92,10 +92,10 @@ header nav ul {
 
 header nav ul li {
                 
-    font-size: 1em;
+    font-size: 2em;
     -webkit-flex: 0 1 auto;
     flex: 0 1 auto;
-            
+    padding: 20px 50px; 
 }
 
 header nav ul li a {
@@ -183,7 +183,7 @@ section#items div.menuItem h1 {
 
 section#items div.menuItem p {
             
-    font-size: 0.85em;
+    font-size: 1em;
     margin: 5px;
     font-weight: bold; 
         
@@ -195,6 +195,11 @@ section#items div.menuItem div img {
     width: 60%;
     margin: 5px auto;
 
+}
+
+section#items div.menuItem input {
+
+    font-size: 1.5em; 
 }
 
 #cart_totals  {
