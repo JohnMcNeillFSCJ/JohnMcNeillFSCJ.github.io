@@ -8,17 +8,140 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>John's Bakery - Credit </title>
+    <title>John's Bakery - Checkout</title>
     <link rel="stylesheet" href="bakery_styles.css" />
     <script src="bakery_credit.js" async></script>
 </head>
 <body>
+
+    <header>
+
+        <div>
+            <label for="mBox">Member Login</label>
+            <input id="mBox" type="text" />
+            <label for="mpwd">Password</label>
+            <input id="mpwd" type="password" />
+        </div>
+
+        <img src="bakery_banner.png" alt="John's Bakery Banner'" />
+
+        <nav class="horizontal">
+            <ul>
+                <li><a href="bakery_home.html">Menu</a></li>
+                <li><a href="bakery_about.html">About Us</a></li>
+                <li><a href="bakery_contact.html">Contact Info</a></li>
+                <li><a href="bakery_reviews.html">Reviews</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <section id="paySection">
+
+        <br />
+        <br />
+
+        <form id="order" name="order">
+            <table id="orderTable">
+               
+                <tr>
+                    <td class="rightA"><strong>Subtotal: </strong></td>
+                    <td class="outcell">
+                        <input type="text" name="subTotal" id="subTotal" size="10" readonly />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="rightA"><strong>Tax (7.5%): </strong></td>
+                    <td>
+                        <input type="text" name="salesTax" id="salesTax" size="10" readonly />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="rightA"><strong>Total: </strong></td>
+                    <td>
+                        <input type="text" name="cartTotal" id="cartTotal" size="10" readonly />
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <br />
+        <br />
+
+        <form id="credit" name="credit" method="post" action="co_final.html">
+            <fieldset id="creditcard">
+                <legend>Credit Information</legend>
+
+                <label for="cardHolder">Card Holder*</label>
+                <br />
+                <input name="cardHolder" id="cardHolder" required type="text" />
+                <br />
+                <br />
+
+                <label class="cardLabel">Credit Company*</label>
+                <fieldset id="cards">
+                    <label class="cardLabel">
+                        <input name="company" value="amex" type="radio" required />
+                        <img src="co_amex.png" alt="American Express" />
+                    </label>
+                    <label class="cardLabel">
+                        <input name="company" value="discover" type="radio" />
+                        <img src="co_discover.png" alt="Discover" />
+                    </label>
+                    <label class="cardLabel">
+                        <input name="company" value="master" type="radio" />
+                        <img src="co_master.png" alt="MasterCard" />
+                    </label>
+                    <label class="cardLabel">
+                        <input name="company" value="visa" type="radio" />
+                        <img src="co_visa.png" alt="Visa" />
+                    </label>
+                </fieldset>
+
+                <br />
+
+                <label for="cardNumber">Credit Card Number*</label>
+                <br />
+                <input name="cardNumber" id="cardNumber" required type="text"
+                       pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$" />
+                <br />
+                <br />
+
+                <label for="expDate">Expiration Date*</label>
+                <br />
+                <input name="expDate" id="expDate" required type="text" placeholder="mm/yyyy" />
+                <br />
+                <br />
+
+                <label for="cvc">CVC*</label>
+                <br />
+                <input name="cvc" id="cvc" required pattern="^\d{3,4}$" type="text" />
+                <br />
+                <br />
+
+            </fieldset>
+
+            <p id="footnote">* - Required Item</p>
+            <div id="subButton_container">
+                <input type="submit" id="subButton" value="Submit Payment" />
+            </div>
+            <br />
+
+        </form>
+
+
+    </section>
+
     <footer>
+
+        John's Bakery &copy; 2023 (US)
+
         <!-- Disclaimer -->
         <div id="disclaimer">
             <h2>Disclaimer</h2>
-
-
             <p>
                 This website is for a Web Technologies class and
                 no products or services are available for purchase.
@@ -26,5 +149,7 @@
         </div>
 
     </footer>
+
 </body>
+
 </html>
